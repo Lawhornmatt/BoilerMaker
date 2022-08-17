@@ -1,20 +1,43 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-
-`;
+function genJS(data) {
+  return `// ====================
+  //      IMPORTS
+  // ====================
+  
+  //import * as X from "Y";
+  
+  // ====================
+  //  ACCESS HTML BY DOM
+  // ====================
+  
+  // var YADA = document.getElementById("YADA");
+  // var YADA = $('.yada');
+  
+  // ====================
+  //   INITIALIZATIONS
+  // ====================
+  
+  // ====================
+  //      FUNCTIONS
+  // ====================
+  
+  //FUNCTION-NAME
+  //What it does
+  
+  // === Specific Part of Function ===
+  
+  //NEXT-FUNCTION
+  //What it does
+  
+  // === Specific Part of Function ===
+  
+  
+  // ====================
+  //      EVENT LISTENERS
+  // ====================
+  
+  // ====================
+  //      MISC FUNCs
+  // ====================`;
 }
 
-module.exports = generateMarkdown;
+module.exports = genJS;
