@@ -1,7 +1,7 @@
-// TODO: Include packages needed for this application
 import inquirer from 'inquirer';
 import fs from 'fs';
 
+// This could be acheived with a 'when' but I like this readability better
 const READYorNOT = [
     {
         type: 'list',
@@ -12,74 +12,80 @@ const READYorNOT = [
 ];
 
 const questions = [
-    //GENERAL QUESTIONS ABOUT PROJECT
+    // GENERAL QUESTIONS ABOUT PROJECT
     {
         type: 'input',
         message: `\x1b[31m=== General Questions ===\x1b[0m
     Who is creating this project?`,
         name: 'author',
-        default: `\x1b[32m[Matty L]\x1b[0m`,
+        default: `\x1b[32mMatty L\x1b[0m`,
     },
     {
         type: 'input',
         message: `What is the name of the project?`,
         name: 'projName',
-        default: `\x1b[32m[TBD]\x1b[0m`,
+        default: `\x1b[32mTBD\x1b[0m`,
     },
     {
         type: 'input',
-        message: `Give me a description of the project, long version please:`,
+        message: `Give me a description of the project. Think about:
+    the why, the motivation, the problem it solves, etc...`,
         name: 'descriptLong',
-        default: `\x1b[32m[TBD]\x1b[0m`,
+        default: `\x1b[32mIts very complication, lemme tell ya...\x1b[0m`,
     },
     {
         type: 'input',
         message: `Now summarize all that.\n Give me a description of the project, short this time:`,
         name: 'descriptShort',
-        default: `\x1b[32m[TBD]\x1b[0m`,
+        default: `\x1b[32mStuff happens\x1b[0m`,
     },
     {
-    //README QUESTIONS
+    // README QUESTIONS
         type: 'input',
         message: `Alright, now for...
 \x1b[31m=== ReadMe Questions ===\x1b[0m
     Start by telling me how to install this thing:`,
         name: 'installation',
-        default: `\x1b[32m[TBD]\x1b[0m`,
-    },
-];
-
-
-const HTMLquestions = [
-    {
-      type: 'input',
-      message: `Who is the author?`,
-      name: 'author',
-      default: 'NONE_PROVIDED',
+        default: `\x1b[32mHeck if I know\x1b[0m`,
     },
     {
-      type: 'input',
-      message: `What is the project's name?`,
-      name: 'projName',
-      default: 'NONE_PROVIDED',
+        type: 'input',
+        message: `How does one use this app?`,
+        name: 'useage',
+        default: `\x1b[32mI recommend smashin' yer keyboard\x1b[0m`,
     },
     {
-      type: 'input',
-      message: 'Give a description, please:',
-      name: 'descript',
-      default: 'NONE_PROVIDED',
+        type: 'list',
+        message: `Choose a license for this app:`,
+        name: 'license',
+        choices: ['MIT', 'GNU', 'Apache'],
     },
     {
-      type: 'input',
-      message: 'What are your best Google keyterms?',
-      name: 'keyterms',
-      default: 'NONE_PROVIDED',
+        type: 'input',
+        message: `Who contributed to the making of this app?`,
+        name: 'contrib',
+        default: `\x1b[32mIt was made from scratch\x1b[0m`,
     },
     {
-      type: 'input',
-      message: 'The tab icon is named ____.ico?',
-      name: 'icon',
-      default: 'default',
+        type: 'input',
+        message: `I don't know what they are expecting here`,
+        name: 'tests',
+        default: `\x1b[32mWhat's "Tests"\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `Or here. What the heck are "questions" refering to`,
+        name: 'questions',
+        default: `\x1b[32mHuh?\x1b[0m`,
+    },
+    {
+    // HTML QUESTIONS
+        type: 'input',
+        message: `Alright, just a coupla...
+\x1b[31m=== HTML Questions ===\x1b[0m
+    What are your best Google keyterms?`,
+        name: 'keyterms',
+        default: `\x1b[32m" "\x1b[0m`,
     },
     {
       type: 'input',
@@ -88,23 +94,22 @@ const HTMLquestions = [
       default: 'Hello World! :)',
     },
     {
-      type: 'list',
-      name: 'bkgrnd',
-      message: 'What color background will it have?',
-      choices: ['rgb(15, 30, 25)', 'rgb(215, 230, 225)'],
+    // CSS QUESTIONS
+        type: 'list',
+        message: `Alright, next up...
+\x1b[31m=== CSS Options ===\x1b[0m
+    What kinda theme you picturin' for this thing?`,
+        name: 'theme',
+        choices: ['Dark', 'Light'],
     },
-    {
-      type: 'list',
-      name: 'fntclr',
-      message: 'What color font will it have?',
-      choices: ['rgb(245, 245, 230)', 'rgb(5, 3, 2)'],
-    },
+
+    
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
+// Initializes app
 async function init() {
 
     var flag = false;
@@ -114,7 +119,7 @@ async function init() {
     console.log(`Welcome to \x1b[31mBoilerMaker\x1b[0m.
     We'll get the boilerplate for yer project done in no time!
         Just answer a coupla questions, if ye don't mind... 
- (psst... if you see somethin' that looks like (\x1b[32m[default]\x1b[0m) well that's just
+ (psst... if you see somethin' that looks like (\x1b[32mdefault\x1b[0m) well that's just
  a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`);
     
     const inq1 = await inquirer.prompt(READYorNOT).then((response) => {
@@ -127,5 +132,5 @@ async function init() {
 };
 
 
-// Function call to initialize app
+// Call to initialize app
 init();
