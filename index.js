@@ -2,11 +2,58 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 
-// TODO: Create an array of questions for user input
+const READYorNOT = [
+    {
+        type: 'list',
+        name: 'yesorno',
+        message: 'You cool with all that?\n Are you ready to begin?',
+        choices: ['Yes', 'No'],
+    },
+];
+
 const questions = [
+    //GENERAL QUESTIONS ABOUT PROJECT
+    {
+        type: 'input',
+        message: `\x1b[31m=== General Questions ===\x1b[0m
+    Who is creating this project?`,
+        name: 'author',
+        default: `\x1b[32m[Matty L]\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `What is the name of the project?`,
+        name: 'projName',
+        default: `\x1b[32m[TBD]\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `Give me a description of the project, long version please:`,
+        name: 'descriptLong',
+        default: `\x1b[32m[TBD]\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `Now summarize all that.\n Give me a description of the project, short this time:`,
+        name: 'descriptShort',
+        default: `\x1b[32m[TBD]\x1b[0m`,
+    },
+    {
+    //README QUESTIONS
+        type: 'input',
+        message: `Alright, now for...
+\x1b[31m=== ReadMe Questions ===\x1b[0m
+    Start by telling me how to install this thing:`,
+        name: 'installation',
+        default: `\x1b[32m[TBD]\x1b[0m`,
+    },
+];
+
+
+const HTMLquestions = [
     {
       type: 'input',
-      message: `We are making a website for your project!\nWho is the author?`,
+      message: `Who is the author?`,
       name: 'author',
       default: 'NONE_PROVIDED',
     },
@@ -58,7 +105,27 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {inquirer.prompt(questions)}
+async function init() {
+
+    var flag = false;
+
+    console.log(`\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m`);
+
+    console.log(`Welcome to \x1b[31mBoilerMaker\x1b[0m.
+    We'll get the boilerplate for yer project done in no time!
+        Just answer a coupla questions, if ye don't mind... 
+ (psst... if you see somethin' that looks like (\x1b[32m[default]\x1b[0m) well that's just
+ a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`);
+    
+    const inq1 = await inquirer.prompt(READYorNOT).then((response) => {
+        if (response.yesorno === 'No') {flag = true;};});
+    
+    if (flag === true) {console.log(`'Ey no judgement, come back when yer ready...`); return};
+    if (flag === false) {console.log(`Alrighty, lets get started with...`)};
+    
+    const inq2 = await inquirer.prompt(questions);
+};
+
 
 // Function call to initialize app
 init();
