@@ -49,6 +49,12 @@ function writeFileTree(data) {
     });
 };
 
+// COPY-ICON
+// Copies the default.ico into the filetree
+function copyIcon(data){
+    fs.copyFileSync(`./default.ico`,`./${data.filename}/assets/images/default.ico`);
+};
+
 // WRITE-FILES
 // Creates the files of the project and saves them in the file tree
 function writeFiles(FileName, data, flag) {
@@ -99,6 +105,8 @@ async function init() {
     console.log(step3); // DEBUG:See the inputs post-sanitization
 
     writeFileTree(step3);
+
+    copyIcon(step3);
 
     const dataMD = genMD(step3); 
     const dataHTML = genHTML(step3); 
