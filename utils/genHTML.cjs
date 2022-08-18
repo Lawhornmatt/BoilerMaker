@@ -1,3 +1,4 @@
+// GENERATE-HTML
 function genHTML(data) {
   return `<!DOCTYPE html>
   <html lang="en">

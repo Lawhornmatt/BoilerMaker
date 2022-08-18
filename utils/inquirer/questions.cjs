@@ -9,6 +9,7 @@ const READYorNOT = [
     },
 ];
 
+// Collects the info to make the initialized project file
 const questions = [
     // GENERAL QUESTIONS ABOUT PROJECT
     {
@@ -102,6 +103,7 @@ const questions = [
     },
 ];
 
+// The quick intro blurb
 const intro = `
 \x1b[31m===@\x1b[0m
 \x1b[31m===@\x1b[0m
@@ -113,10 +115,15 @@ Welcome to \x1b[31mBoilerMaker\x1b[0m.
  (psst... if you see somethin' that looks like (\x1b[32mdefault\x1b[0m) well that's just
  a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`;
 
+// The quick outro blurb
 const outro = `
 Alright, all done, good luck on the project now.
     Just copy paste it outta here and \x1b[31mget to werk\x1b[0m.
 \x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m
 \x1b[4mMatthew Lawhorn == 2022 == MIT License\x1b[0m`;
 
-module.exports = { READYorNOT, questions, intro, outro };
+// If user selects YES or NO during READYorNOT
+const nothanks = `Hey no judgement, come back when yer ready...`;
+const goahead = `Alrighty, lets get started with...`;
+
+module.exports = { READYorNOT, questions, intro, outro, nothanks, goahead };

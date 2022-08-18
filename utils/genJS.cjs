@@ -1,3 +1,4 @@
+// GENERATE-JAVASCRIPT
 function genJS(data) {
   return `// ====================
   //      IMPORTS

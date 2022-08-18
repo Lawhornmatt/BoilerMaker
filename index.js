@@ -1,7 +1,13 @@
-import inquirer from 'inquirer';
-import fs from 'fs';
+// ====================
+//  IMPORTS (3rd Party)
+// ====================
 
-// import { mkdirSync } from 'node:fs';
+import inquirer from 'inquirer';
+import fs from 'fs'; // import { mkdirSync } from 'node:fs';
+
+// ====================
+//  IMPORTS (My Scripts)
+// ====================
 
 import pkg1 from './utils/sanitize.cjs';
 const sanitize = pkg1;
@@ -19,8 +25,15 @@ import pkg7 from './utils/genJS.cjs';
 const genJS = pkg7;
 
 import pkg8 from "./utils/inquirer/questions.cjs";
-const { READYorNOT, questions, intro, outro } = pkg8;
+const { READYorNOT, questions, intro, outro, nothanks, goahead } = pkg8;
 
+// ====================
+//      FUNCTIONS
+// ====================
+
+// WRITE-FILE-TREE
+// Creates the file structure necessary for creating the files
+// Uses synchronous version of mkdir so that file tree is made BEFORE files try to be written
 function writeFileTree(data) {
     
     fs.mkdirSync(`./${data.projName}/assets/images`, { recursive: true }, (err) => {
@@ -36,6 +49,8 @@ function writeFileTree(data) {
     });
 };
 
+// WRITE-FILES
+// Creates the files of the project and saves them in the file tree
 function writeFiles(FileName, data, flag) {
 
     if (flag === 1) {
@@ -59,38 +74,39 @@ function writeFiles(FileName, data, flag) {
     };
 };
 
-// Initializes app
+// INITIALIZE
+// An asynchronous function that begins and ends the program
 async function init() {
 
-    var flag = false;
+    console.log(intro); //NECESSARY
+    
+    var flag = false; // == All of step1 is just to kill the program if the user selects 'No' ==
 
-    console.log(intro);
-    
     const step1 = await inquirer.prompt(READYorNOT)
-        .then((response) => {if (response.yesorno === 'No') {flag = true;};});
+        .then((response) => {if (response.yesorno === 'No') { flag = true;
+        };
+    });
     
-    if (flag === true) {console.log(`Hey no judgement, come back when yer ready...`); return};
-    if (flag === false) {console.log(`Alrighty, lets get started with...`)};
+    if (flag === true) {console.log(nothanks); return};
+    if (flag === false) {console.log(goahead)};
     
     const step2 = await inquirer.prompt(questions);
 
-    //console.log(inq2); // See what inputs the user gave in a JSON object
+    //console.log(inq2); // DEBUG:See what inputs the user gave in a JSON object
     
     const step3 = sanitize(step2);
 
-    //console.log(step3); // See the inputs post-sanitization
+    //console.log(step3); // DEBUG:See the inputs post-sanitization
 
     writeFileTree(step3);
 
     const dataMD = genMD(step3); 
-
-    //console.log(dataMD); // See the sani'd data turned into a ReadMe
-
     const dataHTML = genHTML(step3); 
     const dataRESET = genRESET(step3); 
     const dataSTYLE = genSTYLE(step3); 
     const dataJS = genJS(step3); 
-
+    
+    //console.log(dataMD); // DEBUG:See the sani'd data turned into a ReadMe
 
     writeFiles(step3, dataMD, 1);
     writeFiles(step3, dataHTML, 2);
@@ -98,7 +114,7 @@ async function init() {
     writeFiles(step3, dataSTYLE, 4);
     writeFiles(step3, dataJS, 5);
 
-    console.log(outro);
+    console.log(outro); //NECESSARY
 
 };
 

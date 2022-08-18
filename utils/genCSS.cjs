@@ -1,4 +1,4 @@
-// Take user input and turn into strings with rgb values
+// Take user input and turn into strings with rgb values.
 function background(input) {
   
   let returnString = '';
@@ -37,6 +37,7 @@ function font(input) {
   return returnString;
 }
 
+// GENERATE-STYLE
 function genSTYLE(data) {
 
   const mainBG = background(data);
@@ -103,6 +104,7 @@ function genSTYLE(data) {
     }`;
 }
 
+// GENERATE-RESET
 function genRESET(data) {
   return `html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
