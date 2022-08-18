@@ -21,9 +21,7 @@ function sanitize(data) {
     // or anything else one wouldnt want users submitting
 
   }
-
   return data;
 }
-
 
 module.exports = sanitize;

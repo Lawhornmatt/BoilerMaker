@@ -171,10 +171,7 @@ ${sectionTxt}
 
 [Further license information can be found here.](${link})
 
-
-
 `;
-
 };
 
 module.exports = genMD;

@@ -102,7 +102,7 @@ async function init() {
     
     const step3 = sanitize(step2);
 
-    console.log(step3); // DEBUG:See the inputs post-sanitization
+    //console.log(step3); // DEBUG:See the inputs post-sanitization
 
     writeFileTree(step3);
 
