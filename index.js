@@ -35,7 +35,7 @@ const questions = [
         message: `Give me a description of the project. Think about:
     the why, the motivation, the problem it solves, etc...`,
         name: 'descriptLong',
-        default: `\x1b[32mIts very complication, lemme tell ya...\x1b[0m`,
+        default: `\x1b[32mIt is very complicated, lemme tell ya...\x1b[0m`,
     },
     {
         type: 'input',
@@ -56,7 +56,7 @@ const questions = [
         type: 'input',
         message: `How does one use this app?`,
         name: 'useage',
-        default: `\x1b[32mI recommend smashin' yer keyboard\x1b[0m`,
+        default: `\x1b[32mClick wildly\x1b[0m`,
     },
     {
         type: 'list',
@@ -74,7 +74,7 @@ const questions = [
         type: 'input',
         message: `I don't know what they are expecting here`,
         name: 'tests',
-        default: `\x1b[32mWhat's "Tests"\x1b[0m`,
+        default: `\x1b[32mWhat "Tests"\x1b[0m`,
     },
     {
         type: 'input',
@@ -89,7 +89,7 @@ const questions = [
 \x1b[31m=== HTML Questions ===\x1b[0m
     What are your best Google keyterms?`,
         name: 'keyterms',
-        default: `\x1b[32m" "\x1b[0m`,
+        default: `\x1b[32mNone\x1b[0m`,
     },
     {
         type: 'input',

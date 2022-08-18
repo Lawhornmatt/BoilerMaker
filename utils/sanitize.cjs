@@ -2,8 +2,9 @@ function sanitize(data) {
 
   for (const thing in data) {
 
-    if (data[thing] == '\x1B[32mMatty L\x1B[0m') {
-      data[thing] = 'Matty L';
+    if (data[thing].includes(`\x1B[32m`)) {
+
+      data[thing] = data[thing].slice(5, (data[thing].length - 4));
     };
 
   }
