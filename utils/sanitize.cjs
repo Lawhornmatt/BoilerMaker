@@ -12,6 +12,10 @@ function sanitize(data) {
       data[thing] = `GNU`;
     };
 
+    if ([thing] == `projName`) {
+      data.filename = data[thing].trim().toLowerCase().replace(/\s+/g, '-')
+    };
+
     // TODO: Here would go more if-statements removing curse words,
     // or any code submitted,
     // or anything else one wouldnt want users submitting

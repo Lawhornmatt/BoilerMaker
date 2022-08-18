@@ -36,15 +36,15 @@ const { READYorNOT, questions, intro, outro, nothanks, goahead } = pkg8;
 // Uses synchronous version of mkdir so that file tree is made BEFORE files try to be written
 function writeFileTree(data) {
     
-    fs.mkdirSync(`./${data.projName}/assets/images`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.filename}/assets/images`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 
-    fs.mkdirSync(`./${data.projName}/assets/css`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.filename}/assets/css`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 
-    fs.mkdirSync(`./${data.projName}/libs`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.filename}/libs`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 };
@@ -54,23 +54,23 @@ function writeFileTree(data) {
 function writeFiles(FileName, data, flag) {
 
     if (flag === 1) {
-        fs.writeFile(`./${FileName.projName}/README.md`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
+        fs.writeFile(`./${FileName.filename}/README.md`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 2) {
-        fs.writeFile(`./${FileName.projName}/index.html`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
+        fs.writeFile(`./${FileName.filename}/index.html`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 3) {
-        fs.writeFile(`./${FileName.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
+        fs.writeFile(`./${FileName.filename}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 4) {
-        fs.writeFile(`./${FileName.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
+        fs.writeFile(`./${FileName.filename}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 5) {
-        fs.writeFile(`./${FileName.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
+        fs.writeFile(`./${FileName.filename}/libs/main.js`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 };
 
@@ -96,7 +96,7 @@ async function init() {
     
     const step3 = sanitize(step2);
 
-    //console.log(step3); // DEBUG:See the inputs post-sanitization
+    console.log(step3); // DEBUG:See the inputs post-sanitization
 
     writeFileTree(step3);
 
