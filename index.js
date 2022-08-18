@@ -19,8 +19,7 @@ import pkg7 from './utils/genJS.cjs';
 const genJS = pkg7;
 
 import pkg8 from "./utils/inquirer/questions.cjs";
-const { READYorNOT, questions } = pkg8;
-
+const { READYorNOT, questions, intro, outro } = pkg8;
 
 function writeFileTree(data) {
     
@@ -60,19 +59,12 @@ function writeFiles(FileName, data, flag) {
     };
 };
 
-
 // Initializes app
 async function init() {
 
     var flag = false;
 
-    console.log(`\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m`);
-
-    console.log(`Welcome to \x1b[31mBoilerMaker\x1b[0m.
-    We'll get the boilerplate for yer project done in no time!
-        Just answer a coupla questions, if ye don't mind... 
- (psst... if you see somethin' that looks like (\x1b[32mdefault\x1b[0m) well that's just
- a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`);
+    console.log(intro);
     
     const step1 = await inquirer.prompt(READYorNOT)
         .then((response) => {if (response.yesorno === 'No') {flag = true;};});
@@ -106,12 +98,7 @@ async function init() {
     writeFiles(step3, dataSTYLE, 4);
     writeFiles(step3, dataJS, 5);
 
-    console.log(`Alright, all done, good luck on the project now.
-    Just copy paste it outta here and \x1b[31mget to werk\x1b[0m.`);
-
-    console.log(`\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m`);
-
-    console.log(`\x1b[4mMatthew Lawhorn == 2022 == MIT License\x1b[0m`);
+    console.log(outro);
 
 };
 

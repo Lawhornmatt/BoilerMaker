@@ -102,4 +102,21 @@ const questions = [
     },
 ];
 
-module.exports = { READYorNOT, questions };
+const intro = `
+\x1b[31m===@\x1b[0m
+\x1b[31m===@\x1b[0m
+\x1b[31m===@\x1b[0m
+\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m
+Welcome to \x1b[31mBoilerMaker\x1b[0m.
+    We'll get the boilerplate for yer project done in no time!
+        Just answer a coupla questions, if ye don't mind... 
+ (psst... if you see somethin' that looks like (\x1b[32mdefault\x1b[0m) well that's just
+ a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`;
+
+const outro = `
+Alright, all done, good luck on the project now.
+    Just copy paste it outta here and \x1b[31mget to werk\x1b[0m.
+\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m
+\x1b[4mMatthew Lawhorn == 2022 == MIT License\x1b[0m`;
+
+module.exports = { READYorNOT, questions, intro, outro };
