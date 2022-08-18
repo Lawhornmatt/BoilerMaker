@@ -27,9 +27,9 @@ August 2022
 
 ## License
 
-MIT License
+[MIT License](https://opensource.org/licenses/MIT)
 
-Copyright (c) [2022] [Runtime-Terror]
+Copyright (c) 2022 Matthew T Lawhorn
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
