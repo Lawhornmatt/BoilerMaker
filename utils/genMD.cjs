@@ -13,13 +13,14 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 function genMD(data) {
 
-  
+  console.log(data.license);
 
   return `## WELCOME:
 
 This is the ReadMe for ${data.author}'s project titled: <i>Daily Delight</i>
 
 `;
+
 }
 
 module.exports = genMD;
