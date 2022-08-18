@@ -1,6 +1,8 @@
-# BOILER MAKER [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# BOILER MAKER
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Bugs](https://img.shields.io/github/issues/Lawhornmatt/Ch9_BoilerMaker/bug.svg)](https://github.com/Lawhornmatt/Ch9_BoilerMaker/issues)
 
-## WELCOME:
+## WELCOME: 
 
 This is the README.md for Matty Lawhorn's Module 9 Challenge named "Boiler Maker"
 
