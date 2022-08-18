@@ -11,12 +11,12 @@ function genHTML(data) {
     <!-- Project Metatags -->
     <meta name="author" content="${data.author}">
     <meta name="application-name" content="${data.projName}">
-    <meta name="description" content="${data.descript}">
+    <meta name="description" content="${data.descriptShort}">
     <meta name="keywords" content="${data.keyterms}">
       
     <!-- Title and Icon -->
     <title>${data.projName}</title>
-    <link rel="icon" href="./assets/images/${data.icon}.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/images/default.ico" type="image/x-icon">
       
     <!-- My CSS  -->
     <link rel="stylesheet" href="./assets/css/reset.css">

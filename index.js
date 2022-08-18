@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 
-import { mkdir } from 'node:fs';
+// import { mkdirSync } from 'node:fs';
 
 import pkg1 from './utils/sanitize.cjs';
 const sanitize = pkg1;
@@ -18,123 +18,21 @@ const { genRESET, genSTYLE } = pkg5;
 import pkg7 from './utils/genJS.cjs';
 const genJS = pkg7;
 
-// This could be acheived with a 'when' but I like this readability better
-// Also could use type: confirm but I think list still has better UX
-const READYorNOT = [
-    {
-        type: 'list',
-        name: 'yesorno',
-        message: 'You cool with all that?\n Are you ready to begin?',
-        choices: ['Yes', 'No'],
-    },
-];
+import pkg8 from "./utils/inquirer/questions.cjs";
+const { READYorNOT, questions } = pkg8;
 
-const questions = [
-    // GENERAL QUESTIONS ABOUT PROJECT
-    {
-        type: 'input',
-        message: `\x1b[31m=== General Questions ===\x1b[0m
-    Who is creating this project?`,
-        name: 'author',
-        default: `\x1b[32mMatty L\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `What is the name of the project?`,
-        name: 'projName',
-        default: `\x1b[32mTBD\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `Give me a description of the project. Think about:
-    the why, the motivation, the problem it solves, etc...`,
-        name: 'descriptLong',
-        default: `\x1b[32mIt is very complicated, lemme tell ya...\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `Now summarize all that.\n Give me a description of the project, short this time:`,
-        name: 'descriptShort',
-        default: `\x1b[32mStuff happens\x1b[0m`,
-    },
-    {
-    // README QUESTIONS
-        type: 'input',
-        message: `Alright, now for...
-\x1b[31m=== ReadMe Questions ===\x1b[0m
-    Start by telling me how to install this thing:`,
-        name: 'installation',
-        default: `\x1b[32mHeck if I know\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `How does one use this app?`,
-        name: 'useage',
-        default: `\x1b[32mClick wildly\x1b[0m`,
-    },
-    {
-        type: 'list',
-        message: `Choose a license for this app:`,
-        name: 'license',
-        choices: ['MIT', 'GNU GPL v3', 'Apache'],
-    },
-    {
-        type: 'input',
-        message: `Who contributed to the making of this app?`,
-        name: 'contrib',
-        default: `\x1b[32mIt was made from scratch\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `I don't know what they are expecting here`,
-        name: 'tests',
-        default: `\x1b[32mWhat "Tests"\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `Or here. What the heck are "questions" refering to`,
-        name: 'questions',
-        default: `\x1b[32mHuh?\x1b[0m`,
-    },
-    {
-    // HTML QUESTIONS
-        type: 'input',
-        message: `Alright, just a coupla...
-\x1b[31m=== HTML Questions ===\x1b[0m
-    What are your best Google keyterms?`,
-        name: 'keyterms',
-        default: `\x1b[32mNone\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: 'Now give a message for the world:',
-        name: 'message',
-        default: 'Hello World! :)',
-    },
-    {
-    // CSS QUESTIONS
-        type: 'list',
-        message: `Alright, next up...
-\x1b[31m=== CSS Options ===\x1b[0m
-    What kinda theme you picturin' for this thing?`,
-        name: 'theme',
-        choices: ['Dark', 'Light', 'Forest'],
-    },
-
-    
-];
 
 function writeFileTree(data) {
     
-    mkdir(`./${data.projName}/assets/images`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.projName}/assets/images`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 
-    mkdir(`./${data.projName}/assets/css`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.projName}/assets/css`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 
-    mkdir(`./${data.projName}/libs`, { recursive: true }, (err) => {
+    fs.mkdirSync(`./${data.projName}/libs`, { recursive: true }, (err) => {
         if (err) throw err;
     });
 };
@@ -142,23 +40,23 @@ function writeFileTree(data) {
 function writeFiles(FileName, data, flag) {
 
     if (flag === 1) {
-        fs.writeFile(`./${FileName.projName}/README.md`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/README.md`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 2) {
-        fs.writeFile(`./${FileName.projName}/index.html`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/index.html`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 3) {
-        fs.writeFile(`./${FileName.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 4) {
-        fs.writeFile(`./${FileName.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 
     if (flag === 5) {
-        fs.writeFile(`./${FileName.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log(`\x1b[31m@===\x1b[0m`));
     };
 };
 
@@ -207,6 +105,13 @@ async function init() {
     writeFiles(step3, dataRESET, 3);
     writeFiles(step3, dataSTYLE, 4);
     writeFiles(step3, dataJS, 5);
+
+    console.log(`Alright, all done, good luck on the project now.
+    Just copy paste it outta here and \x1b[31mget to werk\x1b[0m.`);
+
+    console.log(`\x1b[41m B  O  I  L  E  R    M  A  K  E  R \x1b[0m`);
+
+    console.log(`\x1b[4mMatthew Lawhorn == 2022 == MIT License\x1b[0m`);
 
 };
 
