@@ -2,3 +2,14 @@ node_modules
 test.md
 generator.js
 outputs.txt
+
+README.md
+./assets
+./assets/*
+./libs
+./libs/*
+./TBD
+./TBD/*
+./test
+./test/*
+./testing/*

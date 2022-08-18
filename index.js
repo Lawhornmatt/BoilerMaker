@@ -1,11 +1,25 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 
+import { mkdir } from 'node:fs';
+
 import pkg1 from './utils/sanitize.cjs';
 const sanitize = pkg1;
 
-import pkg2 from './utils/genMD.cjs';
-const genMD = pkg2;
+import pkg3 from './utils/genMD.cjs';
+const genMD = pkg3;
+
+import pkg4 from './utils/genHTML.cjs';
+const genHTML = pkg4;
+
+import pkg5 from './utils/genCSS.cjs';
+const genRESET = pkg5;
+
+import pkg6 from './utils/genCSS.cjs';
+const genSTYLE = pkg6;
+
+import pkg7 from './utils/genJS.cjs';
+const genJS = pkg7;
 
 // This could be acheived with a 'when' but I like this readability better
 // Also could use type: confirm but I think list still has better UX
@@ -113,8 +127,44 @@ const questions = [
     
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeFileTree(data) {
+    
+    mkdir(`./${data.projName}/assets/images`, { recursive: true }, (err) => {
+        if (err) throw err;
+    });
+
+    mkdir(`./${data.projName}/assets/css`, { recursive: true }, (err) => {
+        if (err) throw err;
+    });
+
+    mkdir(`./${data.projName}/libs`, { recursive: true }, (err) => {
+        if (err) throw err;
+    });
+};
+
+function writeFiles(data, flag) {
+
+    if (flag === 1) {
+        fs.writeFile(`./${data.projName}/README.ms`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+    };
+
+    if (flag === 2) {
+        fs.writeFile(`./${data.projName}/index.html`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+    };
+
+    if (flag === 3) {
+        fs.writeFile(`./${data.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+    };
+
+    if (flag === 4) {
+        fs.writeFile(`./${data.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+    };
+
+    if (flag === 5) {
+        fs.writeFile(`./${data.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+    };
+};
+
 
 // Initializes app
 async function init() {
@@ -143,9 +193,18 @@ async function init() {
 
     //console.log(step3); // See the inputs post-sanitization
 
-    const dataMD = genMD(step3);
+    writeFileTree(step3);
 
-    console.log(dataMD);
+    const dataMD = genMD(step3); 
+
+    //console.log(dataMD); // See the sani'd data turned into a ReadMe
+
+
+    writeFiles(dataMD, 1);
+    writeFiles(dataHTML, 2);
+    writeFiles(dataRESET, 3);
+    writeFiles(dataSTYLE, 4);
+    writeFiles(dataJS, 5);
 
 };
 

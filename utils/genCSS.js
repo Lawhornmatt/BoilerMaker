@@ -1,17 +1,51 @@
-// TODO: Make proper RGB syntax for colors to be added in
-function yada(input) {
-  var colorString = `rbg ${input}`;
-  return colorString;
+// Take user input and turn into strings with rgb values
+function background(input) {
+  
+  let returnString = '';
+
+  if (input.theme == dark) {
+    returnString = 'rgb(5, 0, 5)';
+  };
+
+  if (input.theme == light) {
+    returnString = 'rgb(245, 245, 230)';
+  };
+
+  if (input.theme == forest) {
+    returnString = 'rgb(15, 30, 25)';
+  };
+
+  return returnString;
+}
+
+function font(input) {
+  
+  let returnString = '';
+
+  if (input.theme == dark) {
+    returnString = 'rgb(245, 245, 230)';
+  };
+
+  if (input.theme == light) {
+    returnString = 'rgb(15, 30, 25)';
+  };
+
+  if (input.theme == forest) {
+    returnString = 'rgb(245, 245, 230)';
+  };
+
+  return returnString;
 }
 
 function genSTYLE(data) {
 
-  yada(data);
-
+  const mainBG = background(data);
+  const mainFONT = font(data);
+  
   return `:root {
 
-    --main-bg-clr: ${colorString};
-    --main-off-wht: ${colorString};
+    --main-bg-clr: ${mainBG};
+    --main-fnt-clr: ${mainFONT};
     }
     
     
@@ -21,7 +55,7 @@ function genSTYLE(data) {
     
     body {
       background-color: var(--main-bg-clr);
-      color: var(--main-off-wht);
+      color: var(--main-fnt-clr);
     }
     
     
@@ -121,5 +155,5 @@ function genRESET(data) {
   /* http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */`;
 }
 
-module.exports = genSTYLE;
 module.exports = genRESET;
+module.exports = genSTYLE;
