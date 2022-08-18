@@ -87,13 +87,13 @@ const questions = [
         type: 'input',
         message: `How can one contribute to this project?`,
         name: 'cont_guidelines',
-        default: `\x1b[32mSorry, it's private\x1b[0m`,
+        default: `\x1b[32mSorry, this project is privately maintained.\x1b[0m`,
     },
     {
         type: 'input',
         message: `Give some instructions for testing:`,
         name: 'tests',
-        default: `\x1b[32mDon't do anything.\x1b[0m`,
+        default: `\x1b[32mThank you, but no testing is needed at this time.\x1b[0m`,
     },
     {
     // HTML QUESTIONS

@@ -108,21 +108,21 @@ function genMD(data) {
 
 ## TABLE OF CONTENTS:
 
-* Title 
+* [Description](#DESCRIPTION)
 
-* Description 
+* [Installation guide](#INSTALLATION) 
 
-* Installation guide 
+* [Usage Info](#USAGEINFO) 
 
-* Usage Info 
+* [Contribution Guidelines](#CONTRIBUTIONGUIDELINES) 
 
-* Contribution Guidelines 
+* [Testing Instructions](#TESTINSTRUCTIONS) 
 
-* Testing Instructions 
+* [Questions](#QUESTIONS)
 
-* Credits
+* [Credits](#CREDIT)
 
-* License
+* [License](#LICENSE)
 
 
 ## DESCRIPTION:
@@ -165,7 +165,11 @@ ${contribSect}
 
 ## LICENSE:
 
+This program is copyrighted under the ${licenseInfo} open source license.
+
 ${sectionTxt}
+
+[Further license information can be found here.](${link})
 
 
 
