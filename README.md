@@ -1,4 +1,4 @@
-# BOILER MAKER
+# BOILER MAKER [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## WELCOME:
 
@@ -18,6 +18,7 @@ Sorry, no deployable GitHub page for this one! Clone the repo to try it yourself
 
 ## CREDIT:
 Source code was provided by the UT Austin Coding Bootcamp
+
 The rest was by Matthew Lawhorn
 
 August 2022
