@@ -21,9 +21,27 @@ const questions = [
     },
     {
         type: 'input',
+        message: `What is the author's GitHub URL?`,
+        name: 'github',
+        default: `\x1b[32mhttps://github.com/Lawhornmatt\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `What is the author's email address?`,
+        name: 'auth_email',
+        default: `\x1b[32mfake@notreal.com\x1b[0m`,
+    },
+    {
+        type: 'input',
         message: `What is the name of the project?`,
         name: 'projName',
         default: `\x1b[32mTBD\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `What year will this be completed?`,
+        name: 'year',
+        default: `\x1b[32m2022\x1b[0m`,
     },
     {
         type: 'input',
@@ -63,19 +81,19 @@ const questions = [
         type: 'input',
         message: `Who contributed to the making of this app?`,
         name: 'contrib',
-        default: `\x1b[32mIt was made from scratch\x1b[0m`,
+        default: `\x1b[32mThis is a solo-project.\x1b[0m`,
     },
     {
         type: 'input',
-        message: `I don't know what they are expecting here`,
+        message: `How can one contribute to this project?`,
+        name: 'cont_guidelines',
+        default: `\x1b[32mSorry, it's private\x1b[0m`,
+    },
+    {
+        type: 'input',
+        message: `Give some instructions for testing:`,
         name: 'tests',
-        default: `\x1b[32mWhat "Tests"\x1b[0m`,
-    },
-    {
-        type: 'input',
-        message: `Or here. What the heck are "questions" refering to`,
-        name: 'questions',
-        default: `\x1b[32mHuh?\x1b[0m`,
+        default: `\x1b[32mDon't do anything.\x1b[0m`,
     },
     {
     // HTML QUESTIONS
