@@ -3,15 +3,15 @@ function background(input) {
   
   let returnString = '';
 
-  if (input.theme == dark) {
+  if (input.theme == 'Dark') {
     returnString = 'rgb(5, 0, 5)';
   };
 
-  if (input.theme == light) {
+  if (input.theme == 'Light') {
     returnString = 'rgb(245, 245, 230)';
   };
 
-  if (input.theme == forest) {
+  if (input.theme == 'Forest') {
     returnString = 'rgb(15, 30, 25)';
   };
 
@@ -22,15 +22,15 @@ function font(input) {
   
   let returnString = '';
 
-  if (input.theme == dark) {
+  if (input.theme == 'Dark') {
     returnString = 'rgb(245, 245, 230)';
   };
 
-  if (input.theme == light) {
+  if (input.theme == 'Light') {
     returnString = 'rgb(15, 30, 25)';
   };
 
-  if (input.theme == forest) {
+  if (input.theme == 'Forest') {
     returnString = 'rgb(245, 245, 230)';
   };
 
@@ -155,5 +155,5 @@ function genRESET(data) {
   /* http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ */`;
 }
 
-module.exports = genRESET;
-module.exports = genSTYLE;
+module.exports = { genRESET, genSTYLE };
+

@@ -13,10 +13,7 @@ import pkg4 from './utils/genHTML.cjs';
 const genHTML = pkg4;
 
 import pkg5 from './utils/genCSS.cjs';
-const genRESET = pkg5;
-
-import pkg6 from './utils/genCSS.cjs';
-const genSTYLE = pkg6;
+const { genRESET, genSTYLE } = pkg5;
 
 import pkg7 from './utils/genJS.cjs';
 const genJS = pkg7;
@@ -121,7 +118,7 @@ const questions = [
 \x1b[31m=== CSS Options ===\x1b[0m
     What kinda theme you picturin' for this thing?`,
         name: 'theme',
-        choices: ['Dark', 'Light'],
+        choices: ['Dark', 'Light', 'Forest'],
     },
 
     
@@ -142,26 +139,26 @@ function writeFileTree(data) {
     });
 };
 
-function writeFiles(data, flag) {
+function writeFiles(FileName, data, flag) {
 
     if (flag === 1) {
-        fs.writeFile(`./${data.projName}/README.ms`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/README.md`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
     };
 
     if (flag === 2) {
-        fs.writeFile(`./${data.projName}/index.html`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/index.html`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
     };
 
     if (flag === 3) {
-        fs.writeFile(`./${data.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/assets/css/reset.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
     };
 
     if (flag === 4) {
-        fs.writeFile(`./${data.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/assets/css/style.css`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
     };
 
     if (flag === 5) {
-        fs.writeFile(`./${data.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
+        fs.writeFile(`./${FileName.projName}/libs/main.js`, data, (err) => err ? console.error(err) : console.log('Yeehaw~~~'));
     };
 };
 
@@ -199,12 +196,17 @@ async function init() {
 
     //console.log(dataMD); // See the sani'd data turned into a ReadMe
 
+    const dataHTML = genHTML(step3); 
+    const dataRESET = genRESET(step3); 
+    const dataSTYLE = genSTYLE(step3); 
+    const dataJS = genJS(step3); 
 
-    writeFiles(dataMD, 1);
-    writeFiles(dataHTML, 2);
-    writeFiles(dataRESET, 3);
-    writeFiles(dataSTYLE, 4);
-    writeFiles(dataJS, 5);
+
+    writeFiles(step3, dataMD, 1);
+    writeFiles(step3, dataHTML, 2);
+    writeFiles(step3, dataRESET, 3);
+    writeFiles(step3, dataSTYLE, 4);
+    writeFiles(step3, dataJS, 5);
 
 };
 
