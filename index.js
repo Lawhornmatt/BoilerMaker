@@ -1,7 +1,11 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 
+import pkg1 from './utils/sanitize.cjs';
+const sanitize = pkg1;
+
 // This could be acheived with a 'when' but I like this readability better
+// Also could use type: confirm but I think list still has better UX
 const READYorNOT = [
     {
         type: 'list',
@@ -88,10 +92,10 @@ const questions = [
         default: `\x1b[32m" "\x1b[0m`,
     },
     {
-      type: 'input',
-      message: 'Now give a message for the world:',
-      name: 'message',
-      default: 'Hello World! :)',
+        type: 'input',
+        message: 'Now give a message for the world:',
+        name: 'message',
+        default: 'Hello World! :)',
     },
     {
     // CSS QUESTIONS
@@ -109,6 +113,8 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
+var userInputs;
+
 // Initializes app
 async function init() {
 
@@ -122,15 +128,22 @@ async function init() {
  (psst... if you see somethin' that looks like (\x1b[32mdefault\x1b[0m) well that's just
  a recommendation from me. Just smack enter to use it \x1b[4mor\x1b[0m type in your own response.)`);
     
-    const inq1 = await inquirer.prompt(READYorNOT).then((response) => {
-        if (response.yesorno === 'No') {flag = true;};});
+    const inq1 = await inquirer.prompt(READYorNOT)
+        .then((response) => {if (response.yesorno === 'No') {flag = true;};});
     
-    if (flag === true) {console.log(`'Ey no judgement, come back when yer ready...`); return};
+    if (flag === true) {console.log(`Hey no judgement, come back when yer ready...`); return};
     if (flag === false) {console.log(`Alrighty, lets get started with...`)};
     
     const inq2 = await inquirer.prompt(questions);
+
+    //console.log(inq2); // See what inputs the user gave in a JSON object
+    
+    const inq3 = sanitize(inq2);
+
+    console.log(inq3); // See the inputs post-sanitization
 };
 
 
 // Call to initialize app
 init();
+
