@@ -1,12 +1,13 @@
 {
   "name": "boiler-plate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generates a blank project based on user inputs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "Matthew T Lawhorn",
+  "author": "Matt Lawhorn",
   "license": "MIT",
   "type": "module",
   "dependencies": {

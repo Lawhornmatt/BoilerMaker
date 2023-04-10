@@ -108,21 +108,21 @@ function genMD(data) {
 
 ## TABLE OF CONTENTS:
 
-* [Description](#DESCRIPTION)
+* [Description](#description)
 
-* [Installation guide](#INSTALLATION) 
+* [Installation guide](#installation) 
 
-* [Usage Info](#USAGEINFO) 
+* [Usage Info](#usage) 
 
-* [Contribution Guidelines](#CONTRIBUTIONGUIDELINES) 
+* [Contribution Guidelines](#contribution) 
 
-* [Testing Instructions](#TESTINSTRUCTIONS) 
+* [Testing Instructions](#testing) 
 
-* [Questions](#QUESTIONS)
+* [Questions](#questions)
 
-* [Credits](#CREDIT)
+* [Credits](#credit)
 
-* [License](#LICENSE)
+* [License](#license)
 
 
 ## DESCRIPTION:
@@ -137,15 +137,15 @@ ${data.descriptLong}
 
 ${data.installation}
 
-## USAGE INFO:
+## USAGE:
 
 ${data.useage}
 
-## CONTRIBUTION GUIDELINES:
+## CONTRIBUTION:
 
 ${data.cont_guidelines}
 
-## TEST INSTRUCTIONS:
+## TESTING:
 
 ${data.tests}
 
